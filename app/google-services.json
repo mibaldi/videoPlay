@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "913439226674",
+    "firebase_url": "https://videoplayer-5a16f.firebaseio.com",
+    "project_id": "videoplayer-5a16f",
+    "storage_bucket": "videoplayer-5a16f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913439226674:android:297bde481a7287e3",
+        "android_client_info": {
+          "package_name": "com.mibaldi.playvideos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913439226674-hbo67ppu3ru7qc8qf3m44ao4p3f21nlj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTAUJKV4noHjmx2lJZtFdJwzR8f61JW-M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
