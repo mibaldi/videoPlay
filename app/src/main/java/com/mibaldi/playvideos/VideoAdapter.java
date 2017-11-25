@@ -6,10 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.mibaldi.playvideos.models.MyVideo;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -21,7 +24,7 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
 
     public interface OnItemClickListener {
-        void onItemClickListener(View view, String url);
+        void onItemClickListener(View view,MyVideo myVideo);
         void onPlayClickListener(View view, String url);
     }
 
@@ -79,15 +82,18 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         public TextView title;
         public String url;
+        public String fullUrl;
         public Boolean exist= false;
-        public Button descargar;
+        public ImageButton descargar;
         public OnItemClickListener listener;
+
+        public MyVideo myVideo;
 
 
         public MyHolder(View itemView, OnItemClickListener listener) {
             super(itemView);
             title = (TextView)itemView.findViewById(R.id.info_text);
-            descargar = (Button) itemView.findViewById(R.id.download);
+            descargar = (ImageButton) itemView.findViewById(R.id.download);
             descargar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -100,14 +106,13 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public void bindItem(MyVideo myVideo) {
             this.url = myVideo.getUrl();
             this.exist = myVideo.isDownload();
-            title.setText(url);
-
-
-
+            this.fullUrl = myVideo.getFullUrl();
+            this.myVideo = myVideo;
+            title.setText(myVideo.getName());
         }
 
         public void onClickItem() {
-            this.listener.onItemClickListener(itemView, url);
+            this.listener.onItemClickListener(itemView,myVideo);
         }
     }
 
@@ -117,14 +122,14 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public TextView title;
         public String url;
         public Boolean exist= false;
-        public Button reproducir;
+        public ImageButton reproducir;
         public OnItemClickListener listener;
 
 
         public MyHolder2(View itemView, OnItemClickListener listener) {
             super(itemView);
             title = (TextView)itemView.findViewById(R.id.info_text);
-            reproducir = (Button) itemView.findViewById(R.id.play);
+            reproducir = (ImageButton) itemView.findViewById(R.id.play);
             reproducir.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -137,7 +142,7 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public void bindItem2(MyVideo myVideo) {
             this.url = myVideo.getUrl();
             this.exist = myVideo.isDownload();
-            title.setText(url);
+            title.setText(myVideo.getName());
 
 
 
@@ -146,9 +151,14 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             this.listener.onPlayClickListener(itemView, url);
         }
 
-
-
-
     }
-
+    public void sortAndNotify(){
+        Collections.sort(listItem, new Comparator<MyVideo>() {
+            @Override
+            public int compare(MyVideo o1, MyVideo o2) {
+                return (Integer.parseInt(o1.getUrl()) > Integer.parseInt(o2.getUrl()))? 0: -1;
+            }
+        });
+        this.notifyDataSetChanged();
+    }
 }

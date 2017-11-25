@@ -9,35 +9,30 @@
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_gravity="center"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        card_view:cardBackgroundColor="@color/cardview_shadow_start_color"
-
+        android:background="@color/itemColor"
         card_view:cardCornerRadius="4dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/download"
-                android:text="Descargar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/play"
-                android:text="Reproducir"
-                android:enabled="false"
-                android:visibility="invisible"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            android:gravity="center_vertical"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal">
             <TextView
                 android:id="@+id/info_text"
                 android:gravity="center"
                 android:text="lorem"
-                android:layout_width="match_parent"
+                android:layout_weight="80"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <ImageButton
+                android:id="@+id/download"
+                android:src="@drawable/ic_action_download"
+                android:layout_weight="20"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
