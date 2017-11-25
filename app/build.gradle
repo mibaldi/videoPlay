@@ -8,8 +8,8 @@ android {
         applicationId "com.mibaldi.playvideos"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "0.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         // Host
         buildConfigField("String", "HOST_Modulo1", "\"http://mibaldi.com/Kotlin/Modulo1/\"")
